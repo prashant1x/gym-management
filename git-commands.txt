@@ -1,0 +1,46 @@
+1. For cloning/downloading a repository
+git clone <ssh/https link>
+
+2. To view your changes
+git status
+
+3. To view line by line difference
+git diff
+
+4. To create a new branch(/new copy of code) on your local machine
+git checkout -b <branch-name>
+
+5. To checkout/switch to a branch(branch must be present)
+git checkout <branch-name>
+
+6. To stage/add you changes localy
+git add --all
+
+7. To commit your changes localy
+git commit -m "<your commit message>"
+
+8. Push your commits along with branch to remote repo/on bitbucket
+git push origin <branch-name>
+
+9. To pull the latest commits/code from remote branch if you are in same branch
+git pull origin <branch-name>
+
+10. To pull the latest commits/code from remote branch if you are in different branch
+git fetch origin <branch-name>:<branch-name>
+
+11. To merge any other branch to your branc(you must be in a particular branch to merge another branch)
+git merge <branch-name>
+
+12. To open gui
+git gui
+
+13. To get list of branch in your local machine
+git branch
+
+14. To add only particular file
+git add <file-name1> [file-name2> ..]
+
+15. To remove your changes before commit
+git reset
+
+p.s. No code will reflect on bitbucket until you add it, commit it and push it
