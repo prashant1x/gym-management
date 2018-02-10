@@ -16,28 +16,29 @@ class LoginController extends Controller {
         }
     }
 
-    public function login($user_name, $password, $role) {
-        try {
-            if (isset($user_name) && strlen(trim($user_name)) > 0 
-            && isset($password) && strlen(trim($password)) > 0) {
-                $pdo = DBEngine::connect();
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $query = "SELECT * FROM user WHERE email=:email AND password=:password AND role=:role";
-                $stmt = $pdo->prepare($query);
-                $stmt->execute(array(':email' => $user_name, ":password" => $password, ":role" => $role));
-                $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                $result = $stmt->fetchAll();
-                if (sizeof($result) > 0) {
-                    $curr = $result[0];
-                    $this->index();
+    public function login() {
+        if (!UserModel::isLoggedIn()) {
+            if (isset($_POST['email']) && strlen(trim($_POST['email'])) > 0
+            && isset($_POST['password']) && strlen(trim($_POST['password'])) > 0
+            && isset($_POST['role']) && strlen(trim($_POST['role'])) > 0) {
+                $user = UserModel::login(trim($_POST['email']), trim($_POST['password']), trim($_POST['role']));
+                if (isset($user)) {
+                    $_SESSION['UID'] = $user->getId();
+                    $_SESSION['UROLE'] = $user->getRole();
+                    $_SESSION['UNAME'] = $user->getName();
+                    $_SESSION['USER_OBJ'] = $user;
+                    $this->View->render('home');
+                } else {
+                    $GLOBALS['error'] = 'Invalid email or password';
+                    $this->View->render('login');
                 }
+            } else {
+                $GLOBALS['error'] = 'All fields mandatory';
+                $this->View->render('login');
             }
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        } finally {
-            DBEngine::disconnect();
+        } else {
+            $this->View->render('home');
         }
-        return null;
     }
 
     public function logout() {

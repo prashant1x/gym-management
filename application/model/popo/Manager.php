@@ -6,6 +6,10 @@ class Manager extends User {
 
     private $salary;
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function getQualification()
     {
     	return $this->qualification;

@@ -1,6 +1,6 @@
 <?php
 
-define('DB_NAME', 'test');
+define('DB_NAME', 'gym-management');
 define('DB_HOST', '127.0.0.1');
 define('DB_UNAME', 'root');
 define('DB_PWD', '');
