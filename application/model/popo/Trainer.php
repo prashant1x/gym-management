@@ -8,6 +8,10 @@ class Trainer extends User {
 
     private $salary;
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function getGender()
     {
     	return $this->gender;

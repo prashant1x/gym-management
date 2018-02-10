@@ -8,6 +8,10 @@ require(APP . 'core/Controller.php');
 require(APP . 'core/View.php');
 require(APP . 'util/db/DBEngine.php');
 
+require(APP . 'model/popo/User.php');
+require(APP . 'model/popo/Member.php');
+require(APP . 'model/popo/Trainer.php');
+require(APP . 'model/popo/Manager.php');
 // redirect to application
 new Application();
 

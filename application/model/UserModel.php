@@ -27,17 +27,17 @@ class UserModel {
                 )
             );
             if ($res) {
-                $query1 = "SELECT id FROM user where email=:email";
+                $query1 = "SELECT * FROM user where email=:email";
                 $stmt = $pdo->prepare($query1);
                 $stmt->execute(array(':email' => $user->getEmail()));
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 $result1 = $stmt->fetchAll();
-                $userId = $result[0]['id'];
+                $userId = $result1[0]['id'];
                 if ($user->getRole() == "U") {
                     $query2 = "INSERT INTO member (user_id, gender, age, weight, height)
                     VALUES (:userId, :gender, :age, :weight, :height)";
                     $stmt1 = $pdo->prepare($query2);
-                    $stmt1->execute(
+                    $result2 = $stmt1->execute(
                         array(
                             ':userId' => $userId,
                             ':gender' => $user->getGender(),
@@ -46,35 +46,29 @@ class UserModel {
                             ':height' => $user->getHeight()
                         )
                     );
-                    $stmt1->setFetchMode(PDO::FETCH_ASSOC);
-                    $result2 = $stmt1->fetchAll();
                     return $result2;
                 } elseif ($user->getRole() == "T") {
                     $query2 = "INSERT INTO trainer (user_id, gender, experience)
                     VALUES (:userId, :gender, :experience)";
                     $stmt1 = $pdo->prepare($query2);
-                    $stmt1->execute(
+                    $result2 = $stmt1->execute(
                         array(
                             ':userId' => $userId,
                             ':gender' => $user->getGender(),
                             ':experience' => $user->getExperience()
                         )
                     );
-                    $stmt1->setFetchMode(PDO::FETCH_ASSOC);
-                    $result2 = $stmt1->fetchAll();
                     return $result2;
                 } else {
                     $query2 = "INSERT INTO manager (user_id, qualification)
                     VALUES (:userId, :qualification)";
                     $stmt1 = $pdo->prepare($query2);
-                    $stmt1->execute(
+                    $result2 = $stmt1->execute(
                         array(
                             ':userId' => $userId,
                             ':qualification' => $user->getQualification()
                         )
                     );
-                    $stmt1->setFetchMode(PDO::FETCH_ASSOC);
-                    $result2 = $stmt1->fetchAll();
                     return $result2;
                 }
             }

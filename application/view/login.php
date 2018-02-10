@@ -322,3 +322,135 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
 </body>
 </html>
+<?php
+echo $GLOBALS['error'];
+echo $GLOBALS['success'];
+?>
+
+<h2>-- Login Form --</h2>
+<form action="<?php echo URL; ?>LoginController/login" method="POST" onsubmit="return validateLogin()">
+  Role: <select id="roleL" name="role" >
+    <option value="">--select--</option>
+    <option value="U">Member</option>
+    <option value="T">Trainer</option>
+    <option value="M">Manager</option>
+  </select><br />
+  Email: <input type="text" id="emailidL" name="email" /><br />
+  Password: <input type="password" id="passwordL" name="password" /><br />
+  <input type="submit" value="Login" /><br />
+</form>
+
+<h2>-- Registration Form --</h2>
+<form action="<?php echo URL; ?>RegistrationController/register" method="POST" onsubmit="return validateRegistration()">
+  Role: <select name="role" id="role" onchange="onRoleSelect()">
+    <option value="">--select--</option>
+    <option value="U">Member</option>
+    <option value="T">Trainer</option>
+    <option value="M">Manager</option>
+  </select><br />
+  Name: <input type="text" id="name" name="name" /><br />
+  Address: <input type="text" id="address" name="address" /><br />
+  Phone: <input type="text" id="phone" name="phone" /><br />
+  Email: <input type="text" id="emailid" name="email" /><br />
+  Password: <input type="password" id="password" name="password" /><br />
+  <div id="U" style="display: none;">
+  Gender: <input type="text" id="genderU" name="genderU" /><br />
+  Age: <input type="text" id="age" name="age" /><br />
+  Weight: <input type="text" id="weight" name="weight" /><br />
+  Height: <input type="text" id="height" name="height" /><br />
+  </div>
+  <div id="T" style="display: none;">
+  Gender: <input type="text" id="genderT" name="genderT" /><br />
+  Experience: <input type="text" id="experience" name="experience" /><br />
+  </div>
+  <div id="M" style="display: none;">
+  Qualification: <input type="text" id="qualification" name="qualification" /><br />
+  </div>
+  <input type="submit" value="Register" /><br />
+</form>
+
+<script>
+  function onRoleSelect() {
+    document.getElementById("U").style.display = 'none';
+    document.getElementById("T").style.display = 'none';
+    document.getElementById("M").style.display = 'none';
+    var role = document.getElementById("role").value;
+    if (role && role.toString().trim().length > 0) {
+      document.getElementById(role.toString().trim()).style.display = 'block';
+    }
+  }
+
+  function isNullOrEmpty(val) {
+    console.log(val);
+    return ((val == void 0) || (val == null) || (val.toString().trim().length == 0));
+  }
+
+  function getValue(elem) {
+    try {
+      return document.getElementById(elem).value;
+    } catch (e) {
+      console.error(e);
+    }
+    return null;
+  } 
+
+  function validateRegistration() {
+    var role = getValue('role');
+    var name = getValue('name');
+    var address = getValue('address');
+    var phone = getValue('phone');
+    var email = getValue('emailid');
+    var password = getValue('password');
+    var genderU = getValue('genderU');
+    var genderT = getValue('genderT');
+    var age = getValue('age');
+    var weight = getValue('weight');
+    var height = getValue('height');
+    var experience = getValue('experience');
+    var qualification = getValue('qualification');
+    if (isNullOrEmpty(role)) {
+      alert('Please select role');
+      return false;
+    }
+    if (isNullOrEmpty(name) || isNullOrEmpty(email) || isNullOrEmpty(phone) || isNullOrEmpty(address) || isNullOrEmpty(password)) {
+      alert('Please complete the form 1');
+      return false;
+    }
+    switch (role) {
+      case 'U': 
+        if (isNullOrEmpty(genderU) || isNullOrEmpty(age) || isNullOrEmpty(weight) || isNullOrEmpty(height)) {
+          alert('Please complete the form 2');
+          return false;
+        }
+        break;
+      case 'T':
+        if (isNullOrEmpty(genderT) || isNullOrEmpty(experience)) {
+          alert('Please complete the form 3');
+          return false;
+        }
+        break;
+      case 'M':
+        if (isNullOrEmpty(qualification)) {
+          alert('Please complete the form 4');
+          return false;
+        }
+        break;
+      default:
+        alert('Invalid role');
+        break;
+        return false;
+    }
+    return true;
+  }
+
+  function validateLogin() {
+    var role = getValue("roleL");
+    var email = getValue("emailidL");
+    var pwd = getValue("passwordL");
+    if (isNullOrEmpty(role) || isNullOrEmpty(email) || isNullOrEmpty(pwd)) {
+      alert('Please fill all details for Login');
+      return false;
+    }
+    return true;
+  }
+</script>

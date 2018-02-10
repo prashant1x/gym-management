@@ -10,6 +10,10 @@ class Member extends User {
 
     private $height;
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function getGender()
     {
     	return $this->gender;
