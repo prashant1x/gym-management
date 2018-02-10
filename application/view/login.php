@@ -15,7 +15,7 @@ body, html {
 }
 
 /* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 ,.bgimg-5 {
+.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 ,.bgimg-5,.bgimg-6 {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,7 +44,12 @@ body, html {
     background-image: url("./images/download.jpg");
     min-height: 400px;
 }
-    /* Fourth image (Login) */
+    /* Fivth image (Login) */
+.bgimg-5 {
+    background-image: url("./images/images.jpg");
+    min-height: 400px;
+}
+/* sixth image (Login) */
 .bgimg-5 {
     background-image: url("./images/images.jpg");
     min-height: 400px;
@@ -55,7 +60,7 @@ body, html {
 
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1024px) {
-    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5 {
+    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5 ,.bgimg-6 {
         background-attachment: scroll;
     }
 }
@@ -70,6 +75,7 @@ body, html {
     </a>
     <a href="#home" class="w3-bar-item w3-button">HOME</a>
     <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
+    <a href="#blog" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> BLOG</a>
     <a href="#login" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> LOGIN</a>
     <a href="#new registration" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i>NEW REGISTRATION</a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
@@ -80,6 +86,7 @@ body, html {
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
     <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+    <a href="#blog" class="w3-bar-item w3-button" onclick="toggleFunction()">BLOG</a>
        <a href="#login" class="w3-bar-item w3-button" onclick="toggleFunction()">LOGIN</a>
     <a href="#new registration" class="w3-bar-item w3-button" onclick="toggleFunction()">NEW REGISTRATION</a>
     <a href="#" class="w3-bar-item w3-button">SEARCH</a>
@@ -132,12 +139,41 @@ body, html {
 <!-- Fourth Parallax Image with Portfolio Text -->
 <div class="bgimg-4 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">BLOG</span>
+  </div>
+</div>
+</div>
+
+<!-- Container (New Registration Section) -->
+<div class="w3-content w3-container w3-padding-64" id="blog">
+ <span>
+ <head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("text").click(function(){
+        $("#div1").fadeToggle();
+        $("#div2").fadeToggle("slow");
+        $("#div3").fadeToggle(3000);
+    });
+});
+</script>
+</head>
+<text>Videos</text><br><br>
+<div id="div1" style="width:80px;height:80px;"><iframe width="300" height="200" src="https://www.youtube.com/embed/L77b57erQ4M?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br><br><br><br><br><br><br><br>
+<div id="div2" style="width:80px;height:80px;"><iframe width="300" height="200" src="https://www.youtube.com/embed/kgNC69CX5M8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<div id="div3" style="width:80px;height:80px;"></div>
+ </span>
+</div>
+
+<!-- Fourth Parallax Image with Portfolio Text -->
+<div class="bgimg-4 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
      <span class="w3-xxlarge w3-text-white w3-wide">LOGIN</span>
   </div>
 </div>
 </div>
 </div>
-
 
 <!-- Container (Login Section) -->
 <div class="w3-content w3-container w3-padding-64" id="login">
