@@ -4,6 +4,10 @@ require_once(APP . 'model/UserModel.php');
 
 class RegistrationController extends Controller {
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function index() {
         if(!UserModel::isLoggedIn()) {
             $this->View->render('login');
@@ -48,7 +52,7 @@ class RegistrationController extends Controller {
                     $user->setQualification(trim($_POST['qualification']));
                     $user->setRole("M");
                 } else {
-                    $GLOBALS['error'] = 'All parameters required 3';
+                    $GLOBALS['error'] = 'All parameters required';
                     $this->index();
                     return;
                 }
@@ -82,7 +86,7 @@ class RegistrationController extends Controller {
                 }
 
             } else {
-                $GLOBALS['error'] = 'All parameters required 4';
+                $GLOBALS['error'] = 'All parameters required';
                 $this->index();
                 return;
             }
