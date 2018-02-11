@@ -115,7 +115,7 @@ class UserModel {
                             $user->setSalary($curri['salary']);
                         } else {
                             $user = new Manager();
-                            $user->setQualfication($curri['qualification']);
+                            $user->setQualification($curri['qualification']);
                             $user->setSalary($curri['salary']);
                         }
                         $user->setId($curr['id']);
