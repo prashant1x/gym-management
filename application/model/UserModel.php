@@ -154,5 +154,38 @@ class UserModel {
         return true;
     }
 
+    public static function getUnAssignedUsers() {
+        try {
+            $pdo = DBEngine::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $query = "SELECT * FROM user 
+            WHERE role='U' 
+            AND id NOT IN (SELECT user_id FROM rfid WHERE user_id IS NOT NULL)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+            if (isset($result) && sizeof($result) > 0) {
+                $userList = array();
+                for ($i = 0, $l = sizeof($result); $i < $l; $i++) {
+                    $curr = $result[$i];
+                    $user = new User();
+                    $user->setId($curr['id']);
+                    $user->setEmail($curr['email']);
+                    $user->setName($curr['name']);
+                    $user->setAddress($curr['address']);
+                    $user->setPhone($curr['phone']);
+                    array_push($userList, $user);
+                }
+                return $userList;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            DBEngine::disconnect();
+        }
+        return null;
+    }
+
 }
 ?>

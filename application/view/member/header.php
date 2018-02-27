@@ -19,6 +19,12 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
+        <a class="nav-link" href="<?php echo URL?>SetController/getSets">Set Mgmt.</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo URL?>SetController/getReps">Reps Mgmt.</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo URL?>LoginController/logout">Logout</a>
       </li>    
     </ul>

@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `app_config`
+--
+
+DROP TABLE IF EXISTS `app_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `app_config` (
+  `set_threshold` int(11) NOT NULL,
+  `reps_threshold` int(11) NOT NULL,
+  PRIMARY KEY (`set_threshold`,`reps_threshold`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `app_config`
+--
+
+LOCK TABLES `app_config` WRITE;
+/*!40000 ALTER TABLE `app_config` DISABLE KEYS */;
+INSERT INTO `app_config` VALUES (600,10);
+/*!40000 ALTER TABLE `app_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `manager`
 --
 
@@ -36,6 +60,7 @@ CREATE TABLE `manager` (
 
 LOCK TABLES `manager` WRITE;
 /*!40000 ALTER TABLE `manager` DISABLE KEYS */;
+INSERT INTO `manager` VALUES (10,'B.COM');
 /*!40000 ALTER TABLE `manager` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +88,37 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` VALUES (8,'M',23,90,181);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rfid`
+--
+
+DROP TABLE IF EXISTS `rfid`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rfid` (
+  `id` varchar(15) NOT NULL,
+  `card_id` varchar(15) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`,`card_id`),
+  KEY `rfid_fk_idx` (`user_id`),
+  KEY `rfid_uk` (`id`,`card_id`,`user_id`),
+  KEY `rfid_ci_uk` (`card_id`),
+  KEY `rfid_id_uk` (`id`),
+  CONSTRAINT `rfid_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rfid`
+--
+
+LOCK TABLES `rfid` WRITE;
+/*!40000 ALTER TABLE `rfid` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rfid` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -89,6 +144,7 @@ CREATE TABLE `trainer` (
 
 LOCK TABLES `trainer` WRITE;
 /*!40000 ALTER TABLE `trainer` DISABLE KEYS */;
+INSERT INTO `trainer` VALUES (9,'M',2,1000);
 /*!40000 ALTER TABLE `trainer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +165,7 @@ CREATE TABLE `user` (
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`,`password`,`role`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +174,65 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (8,'a@a.com','a','Andheri','9876543210','U','Prashant'),(9,'b@b.com','b','Andheri','9876543210','T','Prashant'),(10,'c@c.com','c','Andheri','9876543210','M','Prashant');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_reps`
+--
+
+DROP TABLE IF EXISTS `user_reps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_reps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `set_id` int(11) NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  `count` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_reps_fk_idx` (`set_id`),
+  KEY `user_reps_uk` (`set_id`,`start_time`,`end_time`,`count`),
+  CONSTRAINT `user_reps_fk` FOREIGN KEY (`set_id`) REFERENCES `user_set` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_reps`
+--
+
+LOCK TABLES `user_reps` WRITE;
+/*!40000 ALTER TABLE `user_reps` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_reps` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_set`
+--
+
+DROP TABLE IF EXISTS `user_set`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_set` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rfid` varchar(15) NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_set_fk_idx` (`rfid`),
+  KEY `user_set_uk` (`rfid`,`start_time`,`end_time`),
+  CONSTRAINT `user_set_fk` FOREIGN KEY (`rfid`) REFERENCES `rfid` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_set`
+--
+
+LOCK TABLES `user_set` WRITE;
+/*!40000 ALTER TABLE `user_set` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_set` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -138,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-28 19:15:47
+-- Dump completed on 2018-02-28  3:44:33

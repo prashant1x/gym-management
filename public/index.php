@@ -12,6 +12,10 @@ require(APP . 'model/popo/User.php');
 require(APP . 'model/popo/Member.php');
 require(APP . 'model/popo/Trainer.php');
 require(APP . 'model/popo/Manager.php');
+require(APP . 'model/popo/Set.php');
+require(APP . 'model/popo/Reps.php');
+require(APP . 'model/popo/RFID.php');
+require(APP . 'model/popo/Config.php');
 // redirect to application
 new Application();
 
