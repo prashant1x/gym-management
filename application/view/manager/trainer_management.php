@@ -39,7 +39,7 @@ if (isset($GLOBALS['TrainerList']) && sizeof($GLOBALS['TrainerList']) > 0) {
             <form method="POST" action="<?php echo URL;?>TrainerController/setSalary" onsubmit="return validateSalary('<?php echo $trainer->getId();?>')">
 <?php
         echo '<tr>'
-        .'<td>' . $trainer->getId() . '</td>'
+        . '<td>' . $trainer->getId() . '</td>'
         . '<td>' . $trainer->getName() . '</td>'
         . '<td>' . $trainer->getPhone() . '</td>'
         . '<td>' . $trainer->getAddress() . '</td>'

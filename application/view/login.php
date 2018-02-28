@@ -381,7 +381,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="Phone">Phone:</label>
                     <div class="col-sm-6">
-                      <input type="Phone" class="form-control" id="Phone" placeholder="Phone" name="Phone">
+                      <input type="Phone" class="form-control" id="phone" placeholder="Phone" name="phone">
                     </div>
                   </div>
 
