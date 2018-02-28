@@ -1,5 +1,5 @@
 import http
-import rfid
+from rfid import get_rfid_with_wait
 
 def init():
     while True:
