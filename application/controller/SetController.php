@@ -52,11 +52,16 @@ class SetController extends Controller {
                 $set = new Set();
                 $set->setId($setId);
                 $repsList = RepsModel::get(null, $set);
+                $repsData = RepsModel::getGraph(null, $set);
             } else {
                 $repsList = RepsModel::get($rfid);
+                $repsData = RepsModel::getGraph($rfid);
             }
             if (isset($repsList) && sizeof($repsList) > 0) {
                 $GLOBALS['RepsList'] = $repsList;
+            }
+            if (isset($repsData) && sizeof($repsData) > 0) {
+                $GLOBALS['RepsData'] = $repsData;
             }
         }
         $this->View->render('reps_dashboard');

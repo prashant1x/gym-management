@@ -21,7 +21,7 @@ if (isset($GLOBALS['success']))
     echo $GLOBALS['success'];
 if (isset($GLOBALS['SetList']) && sizeof($GLOBALS['SetList']) > 0) {
 ?>
-        <p class="center" style="font-weight: bold; color: red; font-size: 20px;">Set List</p>
+        <p class="center" style="font-weight: bold; color: red; font-size: 20px;">Slots List</p>
         <br />
         <table id="sets" class="center">
             <tr>
@@ -43,7 +43,7 @@ if (isset($GLOBALS['SetList']) && sizeof($GLOBALS['SetList']) > 0) {
         </table>
 <?php
 } else {
-    echo "<center>No sets found.</center>";
+    echo "<center>No slots found.</center>";
 }
 ?>
 <div id="info"></div>
