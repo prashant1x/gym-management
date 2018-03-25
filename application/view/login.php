@@ -557,6 +557,13 @@
     </div>
     </div>
   </div>
+  <div>
+    <input type="number" id="bmiWeight" name="bmiWeight" placeholder="Weight in kgs." onkeyup="calculateBMI()" />kgs.
+    </br>
+    <input type="number" id="bmiHeight" name="bmiHeight" placeholder="Height in cms" onkeyup="calculateBMI()" />cms.
+    </br>
+    Your BMI is: <span id="bmi" name="bmi"></span>
+  </div>
   <!-- Footer -->
   <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
     <a href="#home" class="w3-button w3-light-grey">
@@ -622,6 +629,22 @@
         x.className += " w3-show";
       } else {
         x.className = x.className.replace(" w3-show", "");
+      }
+    }
+
+    function calculateBMI() {
+      var weight = document.getElementById('bmiWeight').value;
+      var height = document.getElementById('bmiHeight').value;
+      if (weight && weight != null && weight.toString().trim().length > 0
+      && height && height != null && height.toString().trim().length > 0) {
+        try {
+          weight = Number(weight);
+          height = Number(height);
+          height = (height / 100);
+          document.getElementById('bmi').innerHTML = Math.round((weight / (height * height)) * 10) / 10;
+        } catch (err) {
+          alert("Weight and Height must be numbers");
+        }
       }
     }
   </script>
