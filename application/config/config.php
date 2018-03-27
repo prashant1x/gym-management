@@ -17,4 +17,7 @@ define('DB_UNAME', 'root');
 define('DB_PWD', '');
 
 define('URL', 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])));
+
+define('MERCHANT_KEY', 'fEAMZJkY');
+define('MERCHANT_SALT', 'LBLCwXGGjn');
 ?>

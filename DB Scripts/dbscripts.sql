@@ -35,8 +35,65 @@ CREATE TABLE `app_config` (
 
 LOCK TABLES `app_config` WRITE;
 /*!40000 ALTER TABLE `app_config` DISABLE KEYS */;
-INSERT INTO `app_config` VALUES (600,10);
+INSERT INTO `app_config` VALUES (20,3);
 /*!40000 ALTER TABLE `app_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fee_structure`
+--
+
+DROP TABLE IF EXISTS `fee_structure`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fee_structure` (
+  `duration` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  PRIMARY KEY (`duration`),
+  KEY `fees_structure_uk` (`duration`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fee_structure`
+--
+
+LOCK TABLES `fee_structure` WRITE;
+/*!40000 ALTER TABLE `fee_structure` DISABLE KEYS */;
+INSERT INTO `fee_structure` VALUES (1,1000),(3,3000),(6,6000),(12,12000);
+/*!40000 ALTER TABLE `fee_structure` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fees`
+--
+
+DROP TABLE IF EXISTS `fees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fees` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `payment_mode` varchar(45) NOT NULL,
+  `payment_date` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fees_fk_idx` (`user_id`),
+  KEY `fees_uk` (`user_id`,`amount`,`from_date`,`to_date`),
+  CONSTRAINT `fees_fk` FOREIGN KEY (`user_id`) REFERENCES `member` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fees`
+--
+
+LOCK TABLES `fees` WRITE;
+/*!40000 ALTER TABLE `fees` DISABLE KEYS */;
+INSERT INTO `fees` VALUES (3,8,1000,'2018-03-28','2018-04-28','Card','2018-03-28 02:02:10'),(6,8,1000,'2018-04-28','2018-05-28','Card','2018-03-28 02:09:55');
+/*!40000 ALTER TABLE `fees` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -88,7 +145,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (8,'M',23,90,181);
+INSERT INTO `member` VALUES (8,'M',23,90,181),(11,'M',20,50,150);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,6 +175,7 @@ CREATE TABLE `rfid` (
 
 LOCK TABLES `rfid` WRITE;
 /*!40000 ALTER TABLE `rfid` DISABLE KEYS */;
+INSERT INTO `rfid` VALUES ('54006AE3C518','58309',8),('52009F2D4CAC','11596',11);
 /*!40000 ALTER TABLE `rfid` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +202,7 @@ CREATE TABLE `trainer` (
 
 LOCK TABLES `trainer` WRITE;
 /*!40000 ALTER TABLE `trainer` DISABLE KEYS */;
-INSERT INTO `trainer` VALUES (9,'M',2,1000);
+INSERT INTO `trainer` VALUES (9,'M',2,10000);
 /*!40000 ALTER TABLE `trainer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +223,7 @@ CREATE TABLE `user` (
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`,`password`,`role`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +232,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (8,'a@a.com','a','Andheri','9876543210','U','Prashant'),(9,'b@b.com','b','Andheri','9876543210','T','Prashant'),(10,'c@c.com','c','Andheri','9876543210','M','Prashant');
+INSERT INTO `user` VALUES (8,'a@a.com','a','Andheri','9876543210','U','Prashant'),(9,'b@b.com','b','Andheri','9876543210','T','Prashant'),(10,'c@c.com','c','Andheri','9876543210','M','Prashant'),(11,'d@d.com','d','Mumbai','9871234','U','Member1');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +253,7 @@ CREATE TABLE `user_reps` (
   KEY `user_reps_fk_idx` (`set_id`),
   KEY `user_reps_uk` (`set_id`,`start_time`,`end_time`,`count`),
   CONSTRAINT `user_reps_fk` FOREIGN KEY (`set_id`) REFERENCES `user_set` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,6 +262,7 @@ CREATE TABLE `user_reps` (
 
 LOCK TABLES `user_reps` WRITE;
 /*!40000 ALTER TABLE `user_reps` DISABLE KEYS */;
+INSERT INTO `user_reps` VALUES (43,62,'2018-02-27 23:30:55','2018-02-27 23:31:15',10),(44,63,'2018-02-27 23:32:22','2018-02-27 23:32:43',10),(45,64,'2018-02-27 23:34:17','2018-02-27 23:34:43',6),(46,65,'2018-02-27 23:41:38','2018-02-27 23:41:45',3),(47,65,'2018-02-27 23:41:45','2018-02-27 23:41:55',4),(48,65,'2018-02-27 23:41:55','2018-02-27 23:41:59',1),(49,66,'2018-02-27 23:42:22','2018-02-27 23:42:36',8),(50,66,'2018-02-27 23:42:36','2018-02-27 23:42:43',4),(51,67,'2018-02-28 03:17:13','2018-02-28 03:17:22',5),(52,67,'2018-02-28 03:17:22','2018-02-28 03:17:31',4),(53,68,'2018-02-28 03:20:32','2018-02-28 03:20:40',5),(54,68,'2018-02-28 03:20:40','2018-02-28 03:20:51',7);
 /*!40000 ALTER TABLE `user_reps` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +282,7 @@ CREATE TABLE `user_set` (
   KEY `user_set_fk_idx` (`rfid`),
   KEY `user_set_uk` (`rfid`,`start_time`,`end_time`),
   CONSTRAINT `user_set_fk` FOREIGN KEY (`rfid`) REFERENCES `rfid` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,6 +291,7 @@ CREATE TABLE `user_set` (
 
 LOCK TABLES `user_set` WRITE;
 /*!40000 ALTER TABLE `user_set` DISABLE KEYS */;
+INSERT INTO `user_set` VALUES (68,'52009F2D4CAC','2018-02-28 03:20:32','2018-02-28 03:20:51'),(62,'54006AE3C518','2018-02-27 23:30:55','2018-02-27 23:31:15'),(63,'54006AE3C518','2018-02-27 23:32:22','2018-02-27 23:32:43'),(64,'54006AE3C518','2018-02-27 23:34:17','2018-02-27 23:34:43'),(65,'54006AE3C518','2018-02-27 23:41:38','2018-02-27 23:41:59'),(66,'54006AE3C518','2018-02-27 23:42:22','2018-02-27 23:42:43'),(67,'54006AE3C518','2018-02-28 03:17:13','2018-02-28 03:17:31');
 /*!40000 ALTER TABLE `user_set` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,4 +312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-28  3:44:33
+-- Dump completed on 2018-03-28  2:28:50

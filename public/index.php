@@ -16,6 +16,9 @@ require(APP . 'model/popo/Set.php');
 require(APP . 'model/popo/Reps.php');
 require(APP . 'model/popo/RFID.php');
 require(APP . 'model/popo/Config.php');
+require(APP . 'model/popo/Fees.php');
+require(APP . 'model/popo/FeeStructure.php');
+
 // redirect to application
 new Application();
 
