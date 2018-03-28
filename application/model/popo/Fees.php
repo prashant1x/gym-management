@@ -81,7 +81,7 @@ class Fees {
     	return $this->paymentDate;
     }
 
-    public function setPaymentDate($paymentdate)
+    public function setPaymentDate($paymentDate)
     {
     	$this->paymentDate = $paymentDate;
     }

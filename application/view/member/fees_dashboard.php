@@ -59,7 +59,7 @@
             <span class="closebtn">&times;</span>  
             <?php echo $GLOBALS['error']?>
         </div>
-        <?php } else if ($GLOBALS['success']) { ?>
+        <?php } else if (isset($GLOBALS['success'])) { ?>
         <div class="alert success">
             <span class="closebtn">&times;</span>  
             <?php echo $GLOBALS['success']?>

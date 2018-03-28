@@ -75,7 +75,7 @@
 
   /* sixth image (Login) */
 
-  .bgimg-5 {
+  .bgimg-6 {
     background-image: url("<?php echo URL;?>images/images.jpg");
     min-height: 400px;
   }
