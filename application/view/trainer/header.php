@@ -19,6 +19,9 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
+        <a class="nav-link" href="<?php echo URL?>TrainerController/getUserGraph">User Details</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo URL?>LoginController/logout">Logout</a>
       </li>    
     </ul>

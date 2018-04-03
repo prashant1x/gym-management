@@ -2,6 +2,8 @@
 
 require_once(APP . 'model/TrainerModel.php');
 require_once(APP . 'model/UserModel.php');
+require_once(APP . 'model/RFIDModel.php');
+require_once(APP . 'model/RepsModel.php');
 
 class TrainerController extends Controller {
 
@@ -41,6 +43,33 @@ class TrainerController extends Controller {
                 $GLOBALS['error'] = "Required parameters not passed";
             }
             $this->index();
+        } else {
+            $this->View->render('home');
+        }
+    }
+
+    public function getUserGraph() {
+        if(!UserModel::isLoggedIn()) {
+            $this->View->render('login');
+        } else if ($_SESSION['UROLE'] == 'trainer') {
+            $userList = UserModel::getAllUsers();
+            if (isset($userList) && sizeof($userList) > 0) {
+                $GLOBALS['UserList'] = $userList;
+            }
+            if (isset($_POST['userId']) && $_POST['userId']) {
+                $user = new User();
+                $user->setId($_POST['userId']);
+                $rfid = RFIDModel::getRFID($user);
+                $repsList = RepsModel::get($rfid);
+                $repsData = RepsModel::getGraph($rfid);
+                if (isset($repsList) && sizeof($repsList) > 0) {
+                    $GLOBALS['RepsList'] = $repsList;
+                }
+                if (isset($repsData) && sizeof($repsData) > 0) {
+                    $GLOBALS['RepsData'] = $repsData;
+                }
+            }
+            $this->View->render('user_graph');
         } else {
             $this->View->render('home');
         }
