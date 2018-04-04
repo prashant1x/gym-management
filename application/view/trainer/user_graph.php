@@ -79,51 +79,54 @@ if (isset($GLOBALS['RepsList']) && sizeof($GLOBALS['RepsList']) > 0) {
 }
 if (isset($GLOBALS['RepsData'])) {
     $repsData = $GLOBALS['RepsData'];
+?>
+        <canvas id="myChart"></canvas>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+        <script>
+            var dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            dayOfWeek = dayOfWeek.reverse();
+            var days = <?php echo json_encode($repsData[0]);?>;
+            days = days.reverse();
+            var counts = <?php echo json_encode($repsData[1]);?>;
+            counts = counts.reverse();
+            var data = [];
+            var labels = [];
+            var day = Number(days[0]);
+            for (i = 0; i < 7; i++) {
+                labels.push(dayOfWeek[(day + i - 1) % 7]);
+                data.push(counts[i] === void 0 ? 0 : counts[i]);
+            }
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: labels.reverse(),
+                    datasets: [{
+                        label: "Sets Per Day",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: data.reverse(),
+                    }]
+                },
+
+                // Configuration options go here
+                options: {}
+            });
+        </script>
+<?php
 }
 ?>
 
-    <canvas id="myChart"></canvas>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script>
-        var dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        dayOfWeek = dayOfWeek.reverse();
-        var days = <?php echo json_encode($repsData[0]);?>;
-        days = days.reverse();
-        var counts = <?php echo json_encode($repsData[1]);?>;
-        counts = counts.reverse();
-        var data = [];
-        var labels = [];
-        var day = Number(days[0]);
-        for (i = 0; i < 7; i++) {
-            labels.push(dayOfWeek[(day + i - 1) % 7]);
-            data.push(counts[i] === void 0 ? 0 : counts[i]);
-        }
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'bar',
-
-            // The data for our dataset
-            data: {
-                labels: labels.reverse(),
-                datasets: [{
-                    label: "Sets Per Day",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: data.reverse(),
-                }]
-            },
-
-            // Configuration options go here
-            options: {}
-        });
-
-        function submitForm() {
-            var userId = document.getElementById('userId').value;
-            if (userId != "") {
-                document.getElementById('searchForm').submit();
+        <script>
+            function submitForm() {
+                var userId = document.getElementById('userId').value;
+                if (userId != "") {
+                    document.getElementById('searchForm').submit();
+                }
             }
-        }
-    </script>
+        </script>
     </body>
 </html>
