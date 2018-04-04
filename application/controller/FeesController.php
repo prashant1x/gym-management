@@ -81,5 +81,19 @@ class FeesController extends Controller {
         $this->index();
     }
 
+    public function getNotifications() {
+        if (!UserModel::isLoggedIn()) {
+            $this->View->render('login');
+        } else if ($_SESSION['UROLE'] == 'manager') {
+            $userList = UserModel::getAllUsers();
+            if (isset($userList) && sizeof($userList) > 0) {
+                $GLOBALS['UserList'] = $userList;
+            }
+            $this->View->render('notifications');
+        } else {
+            $this->index();
+        }
+    }
+
 }
 ?>
