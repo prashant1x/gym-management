@@ -23,6 +23,12 @@ class FeesController extends Controller {
                     $GLOBALS['LastFeesPaid'] = $fee;
                 }
             }
+            if ($_SESSION['UROLE'] == 'manager') {
+                $userList = FeesModel::getUserList();
+                if (isset($userList) && sizeof($userList) > 0) {
+                    $GLOBALS['UserList'] = $userList;
+                }
+            }
             $this->View->render('fees_dashboard');
         }
     }
