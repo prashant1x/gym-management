@@ -23,6 +23,12 @@ class FeesController extends Controller {
                     $GLOBALS['LastFeesPaid'] = $fee;
                 }
             }
+            if ($_SESSION['UROLE'] == 'manager') {
+                $userList = FeesModel::getUserList();
+                if (isset($userList) && sizeof($userList) > 0) {
+                    $GLOBALS['UserList'] = $userList;
+                }
+            }
             $this->View->render('fees_dashboard');
         }
     }
@@ -79,20 +85,6 @@ class FeesController extends Controller {
     public function failure() {
         $GLOBALS['success'] = 'Payment Failed';
         $this->index();
-    }
-
-    public function getNotifications() {
-        if (!UserModel::isLoggedIn()) {
-            $this->View->render('login');
-        } else if ($_SESSION['UROLE'] == 'manager') {
-            $userList = UserModel::getAllUsers();
-            if (isset($userList) && sizeof($userList) > 0) {
-                $GLOBALS['UserList'] = $userList;
-            }
-            $this->View->render('notifications');
-        } else {
-            $this->index();
-        }
     }
 
 }

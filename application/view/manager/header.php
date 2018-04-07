@@ -28,9 +28,6 @@
         <a class="nav-link" href="<?php echo URL?>FeesController">Fees Pmt.</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo URL?>FeesController/getNotifications">User Mgmt.</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="<?php echo URL?>LoginController/logout">Logout</a>
       </li>    
     </ul>

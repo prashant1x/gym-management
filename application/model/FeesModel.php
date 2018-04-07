@@ -109,5 +109,59 @@ class FeesModel {
         return false;   
     }
 
+    public static function getUserList() {
+        try {
+            $pdo = DBEngine::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $query = "SELECT * FROM user
+            WHERE role = 'U'";
+            $statement = $pdo->prepare($query);
+            $statement->execute();
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $statement->fetchAll();
+            if (sizeof($result) > 0) {
+                $feeList = array();
+                for($i = 0, $l = sizeof($result); $i < $l; $i++) {
+                    $user = new User();
+                    $user->setName($result[$i]['name']);
+                    $user->setEmail($result[$i]['email']);
+                    $user->setPhone($result[$i]['phone']);
+                    $user->setId($result[$i]['id']);
+                    $query1 = "SELECT f.id, from_date, to_date, payment_mode, payment_date from user u
+                    INNER JOIN fees f
+                    ON u.id = user_id
+                    WHERE u.id = :userId
+                    ORDER BY to_date DESC
+                    LIMIT 1";
+                    $statement1 = $pdo->prepare($query1);
+                    $statement1->execute(
+                        array(
+                            ':userId' => $user->getId()
+                        )
+                    );
+                    $statement1->setFetchMode(PDO::FETCH_ASSOC);
+                    $result1 = $statement1->fetchAll();
+                    $fee = new Fees();
+                    $fee->setUser($user);
+                    if (isset($result1) && sizeof($result1) > 0) {
+                        $curr = $result1[0];
+                        $fee->setId($result1[0]['id']);
+                        $fee->setFromDate($result1[0]['from_date']);
+                        $fee->setToDate($result1[0]['to_date']);
+                        $fee->setPaymentMode($result1[0]['payment_mode']);
+                        $fee->setPaymentDate($result1[0]['payment_date']);
+                    }
+                    array_push($feeList, $fee);
+                }
+                return $feeList;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            DBEngine::disconnect();
+        }
+        return null;
+    }
+
 }
 ?>
