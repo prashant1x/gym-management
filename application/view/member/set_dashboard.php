@@ -23,12 +23,16 @@ if (isset($GLOBALS['SetList']) && sizeof($GLOBALS['SetList']) > 0) {
 ?>
         <p class="center" style="font-weight: bold; color: red; font-size: 20px;">Slots List</p>
         <br />
-        <table class="center">
+        <div class="container">
+        <div class="row">
+    <div class="col-sm">
+        <table class="table table-bordered">
             <tr>
                 <th>No.</th>
                 <th>Start Time</th>
                 <th>End Time</th>
             </tr>
+			
 <?php
     $setList = $GLOBALS['SetList'];
     for ($i = 0, $l = sizeof($setList); $i < $l; $i++) {
@@ -41,7 +45,10 @@ if (isset($GLOBALS['SetList']) && sizeof($GLOBALS['SetList']) > 0) {
     }
 ?>
         </table>
-<?php
+	</div>
+			</div>
+			</div>
+		<?php
 } else {
     echo "<center>No slots found.</center>";
 }

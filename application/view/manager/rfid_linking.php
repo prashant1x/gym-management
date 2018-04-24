@@ -23,7 +23,10 @@ if (isset($GLOBALS['UserList']) && sizeof($GLOBALS['UserList']) > 0) {
 ?>
         <p class="center" style="font-weight: bold; color: red; font-size: 20px;">User List</p>
         <br />
-        <table class="center">
+        <div class="container">
+        <div class="row">
+    <div class="col-sm">
+        <table class="table table-bordered">
             <tr>
                 <th>Sr no.</th>
                 <th>User Name</th>
@@ -63,6 +66,9 @@ if (isset($GLOBALS['UserList']) && sizeof($GLOBALS['UserList']) > 0) {
     }
 ?>
         </table>
+		</div>
+		</div>
+		</div>
 <?php
 } else {
     echo "<center>No Users found.</center>";

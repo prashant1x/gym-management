@@ -20,7 +20,10 @@ if (isset($GLOBALS['FeeStructureList']) && sizeof($GLOBALS['FeeStructureList']) 
 ?>
         <p class="center" style="font-weight: bold; color: red; font-size: 20px;">Fees Structure</p>
         <br />
-        <table class="center">
+        <div class="container">
+        <div class="row">
+    <div class="col-sm">
+        <table class="table table-bordered">
             <tr>
                 <th>Duration</th>
                 <th>Amount</th>
@@ -57,6 +60,9 @@ if (isset($GLOBALS['FeeStructureList']) && sizeof($GLOBALS['FeeStructureList']) 
     }
 ?>
         </table>
+		</div>
+		</div>
+		</div>
         <script>
             function showInputText(eid) {
                 document.getElementById(eid).style.display = 'block';
@@ -86,7 +92,10 @@ if(isset($GLOBALS['UserList']) && sizeof($GLOBALS['UserList']) > 0) {
     $userFeeList = $GLOBALS['UserList'];
 ?>
         <p class="center" style="font-weight: bold; color: red; font-size: 20px;">User List</p>
-        <table class="center">
+        <div class="container">
+        <div class="row">
+    <div class="col-sm">
+        <table class="table table-bordered">
             <tr>
                 <th>Name</th>
                 <th>Email</th>
@@ -114,6 +123,9 @@ if(isset($GLOBALS['UserList']) && sizeof($GLOBALS['UserList']) > 0) {
     }
 ?>
         </table>
+		</div>
+		</div>
+		</div>
 <?php
 }
 

@@ -120,6 +120,8 @@
         <i class="fa fa-envelope"></i> LOGIN</a>
       <a href="#new registration" class="w3-bar-item w3-button w3-hide-small">
         <i class="fa fa-envelope"></i>NEW REGISTRATION</a>
+	<a href="#BMI" class="w3-bar-item w3-button w3-hide-small">
+        <i class="fa fa-envelope"></i>BMI</a>
       <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
         <i class="fa fa-search"></i>
       </a>
@@ -131,6 +133,8 @@
       <a href="#blog" class="w3-bar-item w3-button" onclick="toggleFunction()">BLOG</a>
       <a href="#login" class="w3-bar-item w3-button" onclick="toggleFunction()">LOGIN</a>
       <a href="#new registration" class="w3-bar-item w3-button" onclick="toggleFunction()">NEW REGISTRATION</a>
+	  <a href="#BMI" class="w3-bar-item w3-button" onclick="toggleFunction()">BMI</a>
+	  
       <a href="#" class="w3-bar-item w3-button">SEARCH</a>
     </div>
   </div>
@@ -144,15 +148,17 @@
   <div class="w3-content w3-container w3-padding-64" id="about">
     <h3 class="w3-center">ABOUT ME</h3>
     <p class="w3-center">
-      <em>I love photography</em>
+      <em>I love Bodybuilding</em>
     </p>
-    <p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum
-      dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-      enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-      ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>The India chapter of Spartan Gym started in 2002, when the first Spartan Gym India branch 
+	was set up in Mumbai. In the next few years this number grew, and today Spartan Gym has cut 
+	out for itself 120 gyms in India with another 5 under construction and ready to start in this 
+	year. With multiple awards for excellence under its belt including 2 awards from the Lions Club 
+	for the “Best Fitness Chain”, An award from the Images Beauty & wellness for the Most admired 
+	fitness chain of the year”, an award from Franchise India, 8 awards from Spartan Gym International 
+	making it a very eventful 14 years in the growth of the business. Spartan Gym India has bagged the 
+	most prestigious Economic Times ET award for ‘Excellence in Marketing 2013’ & ‘Excellence in Customer 
+	Service 2014’.</p>
     <div class="w3-row">
       <div class="w3-col m6 w3-center w3-padding-large">
         <p>
@@ -160,18 +166,25 @@
             <i class="fa fa-user w3-margin-right"></i>My Name</b>
         </p>
         <br>
-        <img src="/w3images/avatar_hat.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500"
+        <img src="/w3images/about.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500"
           height="333">
       </div>
 
       <!-- Hide this text on small devices -->
       <div class="w3-col m6 w3-hide-small w3-padding-large">
-        <p>Welcome to my website. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Spartan Gym India is acknowledged for its unrivalled success in 
+		providing the finest equipment and fitness knowledge available to 
+		help its members achieve their individual potential. It follows a 
+		globally proven fitness training module with state-of-the-art 
+		infrastructure and delivery methodology and continuous up gradation 
+		through training programs. With certified trainers and nutritional 
+		counseling, Spartan Gym provides a comprehensive approach to the 
+		health and well-being of its member. Catering to famous celebrities 
+		including film & television personalities, sportspersons & Corporate 
+		honchos, Spartan Gym lives up to its reputation to give results. 
+		Whether your goal is to burn fat, tone or add muscle, build strength, 
+		increase flexibility or improve your cardiovascular health, only 
+		Spartan Gym has the atmosphere and experience you need.</p>
       </div>
     </div>
   </div>
@@ -552,17 +565,57 @@
       <div class="w3-row w3-padding-32 w3-section">
         <div class="w3-col m4 w3-container">
         </div>
-      </div>
+      </div> 
       </form>
     </div>
     </div>
   </div>
+  
+  
+  
+  <div class="bgimg-4 w3-display-container w3-opacity-min">
+    <div class="w3-display-middle">
+      <span class="w3-xxlarge w3-text-white w3-wide">BMI</span>
+    </div>
+  </div>
+  </div>
+  
+  
+  
+  <div class="w3-content w3-container w3-padding-64" id="BMI">
+      <h4 class="w3-center">BMI
+        <p class="w3-center">
+          <em>
+          <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
   <div>
-    <input type="number" id="bmiWeight" name="bmiWeight" placeholder="Weight in kgs." onkeyup="calculateBMI()" />kgs.
-    </br>
-    <input type="number" id="bmiHeight" name="bmiHeight" placeholder="Height in cms" onkeyup="calculateBMI()" />cms.
-    </br>
+     <div class="form-group">
+                    <label class="control-label col-sm-4" for="Name">Weight:</label>
+                    <div class="col-sm-4">
+                      <input type="number" class="form-control" id="bmiWeight" placeholder="Weight in Kg's" name="bmiWeight">
+                    </div>
+				</div>
+				
+				<br>
+				<br>
+		<div class="form-group">
+                    <label class="control-label col-sm-4" for="Name">Height:</label>
+                    <div class="col-sm-4">
+                      <input type="number" class="form-control" id="bmiHeight" placeholder="Height in Cm's" name="bmiHeight">
+                    </div>
+				</div>		
+				<br>
+				<br>
+				<br>
     Your BMI is: <span id="bmi" name="bmi"></span>
+  </div>
+  
+ 
+				
   </div>
   <!-- Footer -->
   <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">

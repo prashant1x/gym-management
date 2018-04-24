@@ -20,7 +20,10 @@ if (isset($GLOBALS['TrainerList']) && sizeof($GLOBALS['TrainerList']) > 0) {
 ?>
         <p class="center" style="font-weight: bold; color: red; font-size: 20px;">Trainer List</p>
         <br />
-        <table class="center">
+        <div class="container">
+        <div class="row">
+    <div class="col-sm">
+        <table class="table table-bordered">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -66,6 +69,9 @@ if (isset($GLOBALS['TrainerList']) && sizeof($GLOBALS['TrainerList']) > 0) {
     }
 ?>
         </table>
+		</div>
+		</div>
+		</div>
         <script>
             function showInputText(eid) {
                 document.getElementById(eid).style.display = 'block';
