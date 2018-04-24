@@ -166,7 +166,7 @@
             <i class="fa fa-user w3-margin-right"></i>My Name</b>
         </p>
         <br>
-        <img src="/w3images/about.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500"
+        <img src="<?php echo URL;?>images/download3.jpg" class="w3-round w3-image w3-hover-opacity-off" alt="Photo of Me" width="300"
           height="333">
       </div>
 
