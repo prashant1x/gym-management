@@ -49,7 +49,10 @@ if (isset($GLOBALS['RepsList']) && sizeof($GLOBALS['RepsList']) > 0) {
 ?>
         <p class="center" style="font-weight: bold; color: red; font-size: 20px;">Sets List</p>
         <br />
-        <table class="center">
+        <div class="container">
+        <div class="row">
+    <div class="col-sm">
+        <table class="table table-bordered">
             <tr>
                 <th>No.</th>
                 <th>Slot Id</th>
@@ -71,6 +74,9 @@ if (isset($GLOBALS['RepsList']) && sizeof($GLOBALS['RepsList']) > 0) {
     }
 ?>
         </table>
+		</div>
+		</div>
+		</div>
 <?php
 } else {
     if (isset($_POST['userId'])) {

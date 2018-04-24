@@ -76,11 +76,15 @@ if (isset($GLOBALS['FeeStructureList']) && sizeof($GLOBALS['FeeStructureList']) 
 ?>
         <p class="center" style="font-weight: bold; color: red; font-size: 20px;">Fees Structure</p>
         <br />
-        <table class="center">
+        <div class="container">
+        <div class="row">
+    <div class="col-sm">
+        <table class="table table-bordered">
             <tr>
                 <th>Duration</th>
                 <th>Amount</th>
             </tr>
+			
 <?php
     $feeStructureList = $GLOBALS['FeeStructureList'];
     $durations = array(1 => "Monthly", 3 => "Quarterly", 6 => "Half Yearly", 12 => "Yearly");
@@ -92,11 +96,17 @@ if (isset($GLOBALS['FeeStructureList']) && sizeof($GLOBALS['FeeStructureList']) 
     }
 ?>
         </table>
+		</div>
+			</div>
+			</div>
         <br />
         <p class="center" style="font-weight: bold; color: red; font-size: 20px;">Fees Payment</p>
         <br />
         <form method="post" onsubmit="return validateFields()" action="<?php echo URL;?>FeesController/payFees">
-            <table class="center">
+            <div class="container">
+        <div class="row">
+    <div class="col-sm">
+        <table class="table table-bordered">
                 <tr>
                     <td>
                         <label>Duration</label>
@@ -135,6 +145,9 @@ if (isset($GLOBALS['FeeStructureList']) && sizeof($GLOBALS['FeeStructureList']) 
                     </td>
                 </tr>
             </table>
+			</div>
+			</div>
+			</div>
             <input type="hidden" name="key" value="<?php echo MERCHANT_KEY; ?>" />
             <input type="hidden" name="firstname" value="<?php echo $_SESSION['USER_OBJ']->getName();?>" />
             <input type="hidden" name="email" value="<?php echo $_SESSION['USER_OBJ']->getEmail();?>" />
