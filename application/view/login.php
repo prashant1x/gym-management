@@ -596,7 +596,7 @@
      <div class="form-group">
                     <label class="control-label col-sm-4" for="Name">Weight:</label>
                     <div class="col-sm-4">
-                      <input type="number" class="form-control" id="bmiWeight" placeholder="Weight in Kg's" name="bmiWeight">
+                      <input type="number" class="form-control" id="bmiWeight" placeholder="Weight in Kg's" name="bmiWeight" onkeyup="calculateBMI()" onmouseup="calculateBMI()" />
                     </div>
 				</div>
 				
@@ -605,7 +605,7 @@
 		<div class="form-group">
                     <label class="control-label col-sm-4" for="Name">Height:</label>
                     <div class="col-sm-4">
-                      <input type="number" class="form-control" id="bmiHeight" placeholder="Height in Cm's" name="bmiHeight">
+                      <input type="number" class="form-control" id="bmiHeight" placeholder="Height in Cm's" name="bmiHeight" onkeyup="calculateBMI()" onmouseup="calculateBMI()" />
                     </div>
 				</div>		
 				<br>
